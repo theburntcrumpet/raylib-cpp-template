@@ -30,7 +30,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: linux-build
-        path: build/
+        path: build/game
+        archive: zip
 
   cross-compile-windows:
     runs-on: ubuntu-latest
@@ -55,4 +56,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: windows-build
-        path: build/
+        path: build/game.exe
+        archive: zip
