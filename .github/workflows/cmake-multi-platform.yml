@@ -27,7 +27,7 @@ jobs:
         make
 
     - name: Publish Linux Build
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: linux-build
         path: build/
@@ -52,7 +52,7 @@ jobs:
         make
 
     - name: Publish Windows Build
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: windows-build
         path: build/
