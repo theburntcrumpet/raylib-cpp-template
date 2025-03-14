@@ -30,6 +30,8 @@ jobs:
 
     - name: Upload Linux Build
       uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
         asset_path: build/linux-build.zip
@@ -62,6 +64,8 @@ jobs:
 
     - name: Upload Windows Build
       uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
         asset_path: build/windows-build.zip
