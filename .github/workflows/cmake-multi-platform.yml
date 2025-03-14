@@ -23,12 +23,18 @@ jobs:
         cmake ..
         make
 
-    - name: Publish Linux Build
-      uses: actions/upload-artifact@v4
+    - name: Archive Linux Build
+      run: |
+        cd build
+        zip linux-build.zip game
+
+    - name: Upload Linux Build
+      uses: actions/upload-release-asset@v1
       with:
-        name: linux-build
-        path: build/game
-        archive: zip
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/linux-build.zip
+        asset_name: linux-build.zip
+        asset_content_type: application/zip
 
   cross-compile-windows:
     runs-on: ubuntu-latest
@@ -49,9 +55,15 @@ jobs:
         cmake -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake ..
         make
 
-    - name: Publish Windows Build
-      uses: actions/upload-artifact@v4
+    - name: Archive Windows Build
+      run: |
+        cd build
+        zip windows-build.zip game.exe
+
+    - name: Upload Windows Build
+      uses: actions/upload-release-asset@v1
       with:
-        name: windows-build
-        path: build/game.exe
-        archive: zip
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: build/windows-build.zip
+        asset_name: windows-build.zip
+        asset_content_type: application/zip
