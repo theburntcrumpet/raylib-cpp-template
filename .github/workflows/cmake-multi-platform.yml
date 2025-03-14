@@ -48,7 +48,7 @@ jobs:
       run: |
         mkdir -p build
         cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain-mingw32.cmake ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=../mingw-toolchain.cmake ..
         make
 
     - name: Publish Windows Build
